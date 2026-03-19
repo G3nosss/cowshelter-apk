@@ -23,7 +23,7 @@ class _CameraFeedState extends State<CameraFeed> {
   // ESP32-CAM: stream endpoint (MJPEG) or /capture for snapshot
   // We use snapshot with cache-busting for universal compatibility
   String get _frameUrl =>
-      '${AppConfig.camStream}capture?t=$_tick';
+      '${AppConfig.camStream}?t=$_tick';
 
   @override
   void initState() {
