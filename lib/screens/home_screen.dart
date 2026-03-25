@@ -160,7 +160,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       mainAxisSpacing: 12,
                       childAspectRatio: 2.7,
                       children: [
-                        // Gate — MG90S Servo
+                        // Row 1 — Gate (MG90S Servo)
                         ControlButton(
                           icon: (d?.gateOpen == true)
                               ? Icons.door_front_door
@@ -176,15 +176,15 @@ class _HomeScreenState extends State<HomeScreen> {
                                 : AppConfig.gateOpen,
                           ),
                         ),
-                        // Buzzer
+                        // Row 1 — Emergency Buzzer
                         ControlButton(
                           icon: (d?.buzzerOn == true)
                               ? Icons.volume_off
-                              : Icons.volume_up_rounded,
-                          label:       'Buzzer ON',
-                          activeLabel: 'Buzzer OFF',
-                          color:       Colors.amber.shade700,
-                          activeColor: Colors.red,
+                              : Icons.crisis_alert,
+                          label:       'Emergency Buzz',
+                          activeLabel: 'Stop Buzzer',
+                          color:       Colors.red,
+                          activeColor: Colors.grey,
                           isActive:    d?.buzzerOn ?? false,
                           onTap: () => _sendCommand(
                             (d?.buzzerOn == true)
@@ -192,15 +192,31 @@ class _HomeScreenState extends State<HomeScreen> {
                                 : AppConfig.buzzerOn,
                           ),
                         ),
-                        // Exhaust Fan
+                        // Row 2 — Water Pump
+                        ControlButton(
+                          icon: (d?.pumpOn == true)
+                              ? Icons.water
+                              : Icons.water_outlined,
+                          label:       'Pump ON',
+                          activeLabel: 'Pump OFF',
+                          color:       Colors.blue,
+                          activeColor: Colors.blue.shade300,
+                          isActive:    d?.pumpOn ?? false,
+                          onTap: () => _sendCommand(
+                            (d?.pumpOn == true)
+                                ? AppConfig.pumpOff
+                                : AppConfig.pumpOn,
+                          ),
+                        ),
+                        // Row 2 — Exhaust Fan
                         ControlButton(
                           icon: (d?.fanOn == true)
                               ? Icons.air
                               : Icons.air_outlined,
                           label:       'Fan ON',
                           activeLabel: 'Fan OFF',
-                          color:       Colors.indigo,
-                          activeColor: Colors.indigo.shade300,
+                          color:       Colors.teal,
+                          activeColor: Colors.teal.shade300,
                           isActive:    d?.fanOn ?? false,
                           onTap: () => _sendCommand(
                             (d?.fanOn == true)
@@ -208,11 +224,27 @@ class _HomeScreenState extends State<HomeScreen> {
                                 : AppConfig.fanOn,
                           ),
                         ),
-                        // Refresh
+                        // Row 3 — Light
+                        ControlButton(
+                          icon: (d?.lightOn == true)
+                              ? Icons.lightbulb
+                              : Icons.lightbulb_outline,
+                          label:       'Light ON',
+                          activeLabel: 'Light OFF',
+                          color:       Colors.amber.shade700,
+                          activeColor: Colors.amber.shade300,
+                          isActive:    d?.lightOn ?? false,
+                          onTap: () => _sendCommand(
+                            (d?.lightOn == true)
+                                ? AppConfig.lightOff
+                                : AppConfig.lightOn,
+                          ),
+                        ),
+                        // Row 3 — Refresh
                         ControlButton(
                           icon:  Icons.refresh_rounded,
                           label: 'Refresh',
-                          color: Colors.teal,
+                          color: Colors.blueGrey,
                           onTap: _fetchData,
                         ),
                       ],
