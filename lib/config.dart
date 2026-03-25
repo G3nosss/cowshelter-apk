@@ -18,6 +18,10 @@ class AppConfig {
   static String get gateClose => "http://$r4IP/gate/close";
   static String get fanOn     => "http://$r4IP/fan/on";
   static String get fanOff    => "http://$r4IP/fan/off";
+  static String get pumpOn    => "http://$r4IP/pump/on";
+  static String get pumpOff   => "http://$r4IP/pump/off";
+  static String get lightOn   => "http://$r4IP/light/on";
+  static String get lightOff  => "http://$r4IP/light/off";
   static String get camStream => "http://$camIP/";
 
   static const int gasThreshold    = 400;

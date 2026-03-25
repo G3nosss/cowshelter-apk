@@ -13,6 +13,8 @@ class SensorData {
   final bool     buzzerOn;
   final bool     gateOpen;
   final bool     fanOn;       // exhaust fan (was lightOn)
+  final bool     pumpOn;      // water pump
+  final bool     lightOn;     // light
   final DateTime timestamp;
 
   const SensorData({
@@ -24,6 +26,8 @@ class SensorData {
     required this.buzzerOn,
     required this.gateOpen,
     required this.fanOn,
+    required this.pumpOn,
+    required this.lightOn,
     required this.timestamp,
   });
 
@@ -37,6 +41,8 @@ class SensorData {
       buzzerOn:  (json['buzzer'] as int?) == 1,
       gateOpen:  (json['gate']   as int?) == 1,
       fanOn:     (json['fan']    as int?) == 1,
+      pumpOn:    (json['pump']   as int?) == 1,
+      lightOn:   (json['light']  as int?) == 1,
       timestamp: DateTime.now(),
     );
   }
@@ -57,6 +63,8 @@ class SensorData {
         buzzerOn:  false,
         gateOpen:  false,
         fanOn:     false,
+        pumpOn:    false,
+        lightOn:   false,
         timestamp: DateTime.fromMillisecondsSinceEpoch(int.parse(p[5])),
       );
     } catch (_) {
